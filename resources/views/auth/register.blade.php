@@ -66,16 +66,28 @@
                           </div>
                        </div>
                    </div>
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="">User type</label>
-                    <select name="user_type" class="form-control" id="user_type">
-                        <option value="">Select User Type</option>
-                        <option value="5">Retailer</option>
-                        <option value="4">Distributer</option>
-                        <option value="3">Master Distributer</option>
-                    </select>
-                    <small class="text-danger">@error('user_type'){{$message}}@enderror</small>
-                  </div>
+                   <div class="row">
+                       <div class="col-md-6">
+                          <div class="form-outline mb-4">
+                            <label class="form-label" for="">User type</label>
+                            <select name="user_type" class="form-control" id="user_type">
+                                <option value="">Select User Type</option>
+                                <option value="5">Retailer</option>
+                                <option value="4">Distributer</option>
+                                <option value="3">Master Distributer</option>
+                            </select>
+                            <small class="text-danger">@error('user_type'){{$message}}@enderror</small>
+                          </div>
+                       </div>
+                       <div class="col-md-6">
+                          <div class="form-outline mb-4">
+                            <label class="form-label" for="">Referal Code</label>
+                            <input  placeholder="Referal Code" id="referal_code" type="text" class="form-control" name="referal_code" />
+                            <small class="text-danger">@error('referal_code'){{$message}}@enderror</small>
+                          </div>
+                       </div>
+                   </div>
+                  
                   <div class="pt-1 mb-4 gradient-btn">
                     <button class="" type="submit">Register</button>
                   </div>

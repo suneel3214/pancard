@@ -31,7 +31,8 @@ class PackageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   $package = Package::all();
+    {  
+       $package = Package::with('roles')->orderBy('id', 'desc')->paginate(10);
         $role = $this->packageRepo->getRoll();
         return view('backend.master.package.create',compact('role','package'));
     }

@@ -21,9 +21,6 @@
                 </ul>
               </nav>
             </div>
-              <div class='mb-3 text-end'>
-                  <a href="#" class='btn  btn-sm my-btn'></i>Back</a>
-              </div><hr>
               <div class="container">
                   <div class="row">
                      <div class="col-md-7">
@@ -63,6 +60,7 @@
                                         </table>
                                     </div>
                                 </div>
+                                {!! $package->links() !!}
                             </div>
                         </div>
                      </div>

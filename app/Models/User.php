@@ -61,4 +61,5 @@ class User extends Authenticatable
     public function creates(){
         return  $this->belongsTo(User::class , 'created_by','id');
     }
+    
 }

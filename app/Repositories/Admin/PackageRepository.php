@@ -19,6 +19,7 @@ class PackageRepository extends BaseRepository
      */
 
    public function getRoll(){
+    
     $role = Role::all();
     $role = Role::select('*')->where('id','!=',Auth::id())->get();
     if(Auth::check()){

@@ -1,0 +1,37 @@
+@media screen and (min-width: 320px) {
+    .over-view {
+      display: none!important;
+    }
+  }
+
+  .my-btn{
+    background: linear-gradient(to right, #da8cff, #9a55ff) !important;
+    color: #fff !important;
+  }
+
+  select.select-type{
+      padding: 15px !important;
+  }
+
+  .role-style{
+    background-color: #667266;
+    padding: 4px;
+    color: #fff;
+  }
+
+  .pagination{
+    margin-top: 15px !important;
+  }
+
+  label.error {
+    color: #dc3545;
+    font-size: 14px;
+}
+.note-editing-area{
+  height: 150px !important;
+}
+
+.my-text-shadow{
+  color: #0e0e0e;
+  text-shadow: 2px 2px 4px #080808;
+}

@@ -1,0 +1,51 @@
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    }
+    
+    /* @media (min-width: 768px) {
+    .gradient-form {
+    height: 100vh !important;
+    }
+    } */
+    @media (min-width: 769px) {
+    .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    }
+    }
+    .gradient{
+        padding: 60px 30px;
+        background-image: url(https://templatemo.com/templates/templatemo_570_chain_app_dev/assets/images/client-bg.png);
+        background-size: cover;
+        border-radius: 50px;
+        width: 100%;
+        height: auto;
+        background-repeat: no-repeat;
+    }
+
+    .gradient-btn button{
+        display: inline-block !important;
+        padding: 10px 20px !important;
+        color: #fff !important;
+        text-transform: capitalize;
+        font-size: 15px;
+        background: rgb(19,175,240);
+        background: linear-gradient(105deg, rgba(91,104,235,1) 0%, rgba(40,225,253,1) 100%);
+        border-radius: 23px;
+        font-weight: 500 !important;
+        letter-spacing: 0.3px !important;
+        transition: all .5s;
+        border: none;
+    }
+
+    label.error {
+        color: #dc3545;
+        font-size: 14px;
+    }

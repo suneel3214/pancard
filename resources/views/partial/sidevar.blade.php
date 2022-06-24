@@ -55,7 +55,7 @@
               <div class="collapse" id="master">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route('packages.create')}}">Package</a></li>
-                  <!-- <li class="nav-item"> <a class="nav-link" href="#">Contact</a></li> -->
+                  <li class="nav-item"> <a class="nav-link" href="#">Services</a></li>
                 </ul>
               </div>
             </li>

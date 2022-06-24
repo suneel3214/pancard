@@ -57,6 +57,41 @@
                 </div>
               </div>
             </div>
+            <div class="row">
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-service1 card-img-holder text-white card-h shadow-lg">
+                  <div class="card-body">
+                    <!-- <img src="{{asset('backend/images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image" /> -->
+                    <h3 class="font-weight-normal mb-3">Mobile
+                    <i class="fas fa-mobile-alt" style="color:white"></i>
+                    </h3>
+                    <a href="#" class="text-d"><h6 class="mb-5 text-white">Recharge</h6></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-service2 card-img-holder text-white card-h shadow-lg">
+                  <div class="card-body">
+                    <!-- <img src="{{asset('backend/images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image" /> -->
+                      <h3 class="font-weight-normal mb-3">UTI
+                      <i class="fa fa-location-arrow" style="color:white"></i>
+                      </h3>
+                      <a href="#" class="text-d"><h6 class="mb-5 text-white">Infrastructure Technology And Services</h6></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-service3 card-img-holder text-white card-h shadow-lg">
+                  <div class="card-body">
+                    <!-- <img src="{{asset('backend/images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image" /> -->
+                      <h3 class="font-weight-normal mb-3">NSDL Fingerprint
+                      <i class="fa fa-location-arrow" style="color:white"></i>
+                      </h3>
+                      <a href="#" class="text-d"><h6 class="mb-5 text-white">NSDL Pan Card with Finger Print</h6></a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <!-- content-wrapper ends -->
 @extends('partial.footer')

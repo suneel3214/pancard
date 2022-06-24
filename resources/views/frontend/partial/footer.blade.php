@@ -93,5 +93,24 @@
   <script src="{{asset('frontend/assets/js/imagesloaded.js')}}"></script>
   <script src="{{asset('frontend/assets/js/popup.js')}}"></script>
   <script src="{{asset('frontend/assets/js/custom.js')}}"></script>
+  <a href="#" class="scrollup">Scroll</a>
+  <script type="text/javascript">
+	$(document).ready(function(){
+		<!--Smooth Page Scroll to Top-->
+			$(window).scroll(function(){
+				if ($(this).scrollTop() > 100) {
+					$('.scrollup').fadeIn();
+				} else {
+					$('.scrollup').fadeOut();
+				}
+			}); 
+	 
+			$('.scrollup').click(function(){
+				$("html, body").animate({ scrollTop: 0 }, 600);
+				return false;
+			});
+		
+	});
+	</script>
 </body>
 </html>

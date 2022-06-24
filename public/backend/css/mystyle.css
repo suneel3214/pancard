@@ -10,7 +10,7 @@
   }
 
   select.select-type{
-      padding: 15px !important;
+      padding: 10px !important;
   }
 
   .role-style{
@@ -35,3 +35,24 @@
   color: #0e0e0e;
   text-shadow: 2px 2px 4px #080808;
 }
+
+.card-h{
+height: 150px !important;
+}
+
+.text-d{
+  text-decoration: none;
+  color: #fff;
+}
+
+.bg-gradient-service1{
+  background: linear-gradient(to right, #0a0a09, #fe7096) !important;
+}
+.bg-gradient-service2{
+  background: linear-gradient(to right, #121314, #047edf 99%) !important;
+  background: linear-gradient(to right, #0f1010, #07cdae) !important;
+}
+.bg-gradient-service3{
+  background: linear-gradient(to right, #0f1010, #07cdae) !important;
+}
+

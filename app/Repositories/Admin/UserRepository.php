@@ -89,7 +89,6 @@ class UserRepository extends BaseRepository
         $userParentsData = User::where('id', $reference )->with('creates')->first();
         // $admin = User::where('id',1)->first();
         // dd($userParentsData);
-        $adminId = $userParentsData->creates->creates->creates->creates;
         $firstId = $userParentsData->creates->creates->creates;
         $secondId = $userParentsData->creates->creates;
         $thirdId = $userParentsData->creates;
@@ -100,12 +99,6 @@ class UserRepository extends BaseRepository
         $finalpoints =  $receviePoints*100/100;
         // dd($finalpoints);
 
-        // if($admin){
-        //     $authPoint = User::where('id',$admin->id)->increment('points',$finalpoints*1); 
-        // }
-        if($adminId){
-            $authPoint = User::where('id',$adminId->id)->increment('points',$finalpoints*5);
-        }
         if($firstId){
             $authPoint = User::where('id',$firstId->id)->increment('points',$finalpoints*4);
         }

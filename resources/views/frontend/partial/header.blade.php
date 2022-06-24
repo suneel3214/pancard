@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('/css/home.css')}}">
 
     <title>Pancard</title>
+    <link rel="shortcut icon" href="{{asset('backend/images/dashboard/favicon.ico')}}" />
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('frontend/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

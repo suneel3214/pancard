@@ -57,6 +57,15 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function package_edit($id){
+        $package = Package::find($id);
+        return response()->json([
+            'status'=>200,
+            'package'=> $package,
+        ]);
+    }
+
     public function show($id)
     {
         //
@@ -80,9 +89,20 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updatePackage(Request $request)
     {
-        //
+        $pack_id = $request->input('id');
+        $package = Package::find($pack_id);
+        $package->name = $request->input('name');
+        $package->amount = $request->input('amount');
+        $package->discount = $request->input('discount');
+        $package->role_id = $request->input('role_id');
+        $package->description = $request->input('description');
+
+        $package->update();
+  
+        Alert::success('Success', 'Updated Successfully');
+        return redirect()->route('packages.create');  
     }
 
     /**
@@ -91,8 +111,11 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Package $package)
     {
-        //
+        $package->delete();
+    
+        Alert::success('Deleted', 'Deleted Successfully');
+        return redirect()->route('packages.create');  
     }
 }

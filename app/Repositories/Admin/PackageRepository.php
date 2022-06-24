@@ -34,4 +34,11 @@ class PackageRepository extends BaseRepository
     $package = Package::create($data);
     return redirect()->back();
    }
+
+//    public function packageEdit($request,$id){
+//     $input = $request->all();
+
+//     $package = Package::find($id);
+//     return $package->update($input);
+// }
 }

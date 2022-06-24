@@ -22,7 +22,11 @@
               </nav>
             </div>
               <div class='mb-3 text-end'>
-                  <a href="{{url('/admin/index')}}" class='btn  btn-sm my-btn'></i>Back</a>
+              @if(in_array("Admin", Auth::user()->roles->toArray()))
+              <a href="{{url('/admin/all_user/index')}}" class='btn  btn-sm my-btn'></i>Back</a>
+              @else
+              <a href="{{url('/admin/index')}}" class='btn  btn-sm my-btn'></i>Back</a>
+              @endif
               </div><hr>
               <div class="container">
                   <div class="row">

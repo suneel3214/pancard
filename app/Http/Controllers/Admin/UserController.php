@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
 use RealRashid\SweetAlert\Facades\Alert;
 
+
 class UserController extends Controller
 {
     private $userRepo;
@@ -52,6 +53,7 @@ class UserController extends Controller
 
     public function index(){
         $data = $this->userRepo->getAllUser();
+        // dd($data);
         $user_id = Auth::user()->user_type;
         $authId = Auth::user()->id;
         return view('backend.user.index',compact('data','user_id','authId'));
@@ -73,7 +75,7 @@ class UserController extends Controller
         // dd($user);
         $role_id = Auth::user()->user_type;
         // dd($role_id);
-        Alert::success('Success', 'User Created Successfully');
+        Alert::success('Success', 'The information has been sent to the user email.');
         if($role_id === 1){
         return redirect()->route('admin.all.users');    
             
@@ -96,7 +98,7 @@ class UserController extends Controller
         ]);
         $user = $this->userRepo->userRegister($request);
         // dd($user);
-        Alert::success('Success', 'Registration Successfully');
+        Alert::success('Success', 'The information has been sent to the user email');
         return redirect()->route('login');    
         
     }
@@ -132,9 +134,17 @@ class UserController extends Controller
    public function update(Request $request , $id){
     
     $user = $this->userRepo->userEdit($request,$id);
-  
+
+    $role_id = Auth::user()->user_type;
+    // dd($role_id);
     Alert::success('Success', 'Updated Successfully');
-    return redirect()->route('admin.index');  
+    if($role_id === 1){
+    return redirect()->route('admin.all.users');    
+        
+    }else{
+         return redirect()->route('admin.index');    
+    }
+      
    }
     
     

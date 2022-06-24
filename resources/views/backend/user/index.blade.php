@@ -44,7 +44,7 @@
                               <?php $count = 1; ?>
                               @if(isset($data))
                               @foreach($data as $item)
-                              @if($user_id != $item->roles->id  && $user_id <= $item->roles->id && $authId == $item->created_by)
+                              @if($authId == $item->created_by)
                                   <tbody>
                                       <tr>
                                       <td>{{$count ++}}</td>

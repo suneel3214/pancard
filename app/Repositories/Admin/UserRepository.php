@@ -8,7 +8,8 @@ use App\Repositories\BaseRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
-
+use Mail;
+use App\Mail\MyTestMail;
 /**
  * Class UserRepository.
  */
@@ -67,10 +68,13 @@ class UserRepository extends BaseRepository
     public function userStore($request){
        
 		$data = $request->all();
+        $data['referal_code'] = $this->generateUniqueCode();
+        Mail::to($request->email)->send(new MyTestMail($data));
         $data['password'] = Hash::make($request->password);
         $data['created_by'] = Auth::user()->id;
-        $data['referal_code'] = $this->generateUniqueCode();
+
 		$user = User::create($data);
+
        return redirect()->back();
 		
 	}
@@ -78,8 +82,10 @@ class UserRepository extends BaseRepository
     public function userRegister($request){
        
 		$data = $request->all();
-        $data['password'] = Hash::make($request->password);
         $data['referal_code'] = $this->generateUniqueCode();
+        Mail::to($request->email)->send(new MyTestMail($data));
+
+        $data['password'] = Hash::make($request->password);
         $userId = User::where('referal_code',$request->referal_code)->first();
         $reference = $userId->id;
         $user_id = $userId->user_type;

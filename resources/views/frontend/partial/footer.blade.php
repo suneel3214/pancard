@@ -112,5 +112,18 @@
 		
 	});
 	</script>
+  <script>
+      $(document).ready(function(){
+		$('#mymodel').modal('show');
+	});
+//update modal end
+
+
+   var preloader=document.getElementById('loading');
+
+  function myFunction(){
+    preloader.style.display= 'none';
+  }
+</script>
 </body>
 </html>

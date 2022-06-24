@@ -27,24 +27,30 @@ class UserController extends Controller
     public function allUsers(){
         // $curl = curl_init();
         // curl_setopt_array($curl,
-        //     array(
-        //         CURLOPT_URL => "https://mgopanmitra.com/api/balance.php",
-        //         CURLOPT_RETURNTRANSFER
-        //         => true, CURLOPT_ENCODING
-        //         => "", CURLOPT_MAXREDIRS
-        //         => 10,
-        //         CURLOPT_TIMEOUT => 0,
-        //         CURLOPT_FOLLOWLOCATION
-        //         => true,
-        //         CURLOPT_HTTP_VERSION =>
-        //         CURL_HTTP_VERSION_1_1,
-        //         CURLOPT_CUSTOMREQUEST => "GET",
-        //         CURLOPT_POSTFIELDS => array('api_key' => 'e5e27c-f8edec-6bbfa6-e5e996-51bf0d')
-        //     )
-        // );
+        // array(
+        // CURLOPT_URL =>
+        // "https://panmitra.net/api/RechargeWebService/apitransaction?api_key=663ad9-
+        // 3abce9-bfe747-df31f3-
+        // 8c69b1&mobile=9632456111&opt=AT&amount=10&agentid=545879",
+        // CURLOPT_RETURNTRANSFER => true,
+        // CURLOPT_ENCODING
+        // => "",
+        // CURLOPT_MAXREDIRS
+        // => 10,
+        // CURLOPT_TIMEOUT => 0,
+        // CURLOPT_FOLLOWLOCATION
+        // => true,
+        // CURLOPT_HTTP_VERSION =>
+        // CURL_HTTP_VERSION_1_1,
+        // CURLOPT_CUSTOMREQUEST => "GET",
+        // CURLOPT_HTTPHEADER => array(
+        // "Cookie: cfduid=de28cfada255ee13e31c03c491dc2cb4c1593798958"
+        // ),
+        // ));
         // $response =
         // curl_exec($curl);
         // curl_close($curl);
+        
         // dd($response);
         $data = $this->userRepo->AllUser();
     //    dd($data);
@@ -98,8 +104,14 @@ class UserController extends Controller
         ]);
         $user = $this->userRepo->userRegister($request);
         // dd($user);
-        Alert::success('Success', 'The information has been sent to the user email');
-        return redirect()->route('login');    
+        if($user){
+            Alert::success('Success', 'The information has been sent to the user email');
+            return redirect()->route('login'); 
+        }else{
+            Alert::success('Failed', 'Registration Failed ..!');
+            return redirect()->back(); 
+        }
+           
         
     }
 

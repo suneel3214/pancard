@@ -88,13 +88,17 @@
                        </div>
                    </div>
                   
-                  <div class="pt-1 mb-4 gradient-btn">
+                  <div class="pt-1 mb-4 gradient-btn text-center">
                     <button class="" type="submit">Register</button>
                   </div>
-                  <p class="" style="color: #393f81;">Have already an account? <a href="{{url('/login')}}"
-                  style="color:#000;">Login here</a></p>
+                  <div class="d-flex pb-4 align-items-center justify-content-center">
+                      <p class="mb-0 me-2">Don't have an account?</p>
+                      <a href="{{ url('/login')}}" class="" style="color:#000;">Login here</a>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center">
                   <a href="#!" class="small text-muted">Terms of use.</a>
                   <a href="#!" class="small text-muted">Privacy policy</a>
+                  </div>
                 </form>
               </div>
             </div>

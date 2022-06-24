@@ -39,6 +39,8 @@
        <a href="{{ url('http://pan.hithere.co.nz/') }}" style='color: #fff;text-decoration: none;' class="">Go to Website</a>
     </button>
     <br><br>
-    <p>Thank you</p>
+    <p>Thank you</p><br>
+    <p>Please don't reply..</p>
+
 </body>
 </html>

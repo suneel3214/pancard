@@ -461,4 +461,39 @@
       </div>
     </div>
   </div> 
+  <div class="modal fade" id="mymodel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header lg" style="background:#96cbe5;padding: 0px 1rem;">
+              <h5 class="modal-title" style="color: #fff;" >Notification</h5>
+              <button type="button" class="notification-btn" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+            </div><!-- modal-header end -->
+          <div class="modal-body">
+            <h3 style="color: black"> LATEST UPDATES</h3>
+            <ul>
+               <li><a style="color: black" href="http://www.rjit.ac.in/regform.html" target="_blank" rel="noopener noreferrer">
+               <img class="" style="width:35px" src="http://www.gifandgif.eu/animated_gif/New/Animated%20Gif%20New%20%2826%29.gif" alt="" width="30" height="15">
+             <span style="font-size: 13px;">
+             Biometric Aadhaar Authentication is required for Aadhaar linking in case
+                of Demographic Data mismatch in PAN and Aadhaar. Please visit your
+                 nearest designated PAN center for Biometric Aadhaar Authentication.
+             </span>
+               <br>
+               </a></li>
+               <li><a style="color: black;" href="http://www.rjit.ac.in/regform.html" target="_blank" rel="noopener noreferrer">
+               <img class="" style="width:35px" src="http://www.gifandgif.eu/animated_gif/New/Animated%20Gif%20New%20%2826%29.gif" alt="" width="30" height="15">
+               <span style="font-size: 13px;">
+               With effect from April 08, 2012, PAN applications are required to be furnished in the new forms
+                prescribed by ITD. Indian citizens will have to submit their ‘Application for allotment of new PAN’ in revised Form 
+               49A only. Foreign citizens will have to submit their ‘Application for allotment of new PAN’ in newly notified Form 49AA only.
+               </span><br>
+               </a></li>
+            </ul>
+          </div> <!-- mdal body end -->
+        </div><!-- modal content end  -->    
+    </div><!--  modal dialog end -->
+</div><!-- modal fade end -->
+
   @extends('frontend.partial.footer')

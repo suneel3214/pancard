@@ -36,8 +36,8 @@ https://templatemo.com/tm-570-chain-app-dev
 
   </head>
 
-<body>
-
+<body onload="myFunction()">
+<div id="loading"></div>
   <!-- ***** Preloader Start ***** -->
   <div id="js-preloader" class="js-preloader">
     <div class="preloader-inner">

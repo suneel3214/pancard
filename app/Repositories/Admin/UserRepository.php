@@ -92,31 +92,30 @@ class UserRepository extends BaseRepository
 
         $data['created_by'] = $reference;
         // $authId = Auth::user()->id;
-        $userParentsData = User::where('id', $reference )->with('creates')->first();
+        // $userParentsData = User::where('id', $reference )->with('creates')->first();
         // $admin = User::where('id',1)->first();
         // dd($userParentsData);
-        $firstId = $userParentsData->creates->creates->creates;
-        $secondId = $userParentsData->creates->creates;
-        $thirdId = $userParentsData->creates;
-        $forthId = $userParentsData;
-        $point = Role::where('id',$user_id)->first();
-        // dd($adminId);
-        $receviePoints = $point->percentage_amount;
-        $finalpoints =  $receviePoints*100/100;
+        // $firstId = $userParentsData->creates->creates->creates;
+        // $secondId = $userParentsData->creates->creates;
+        // $thirdId = $userParentsData->creates;
+        // $forthId = $userParentsData;
+        // $point = Role::where('id',$user_id)->first();
+        // $receviePoints = $point->percentage_amount;
+        // $finalpoints =  $receviePoints*100/100;
         // dd($finalpoints);
 
-        if($firstId){
-            $authPoint = User::where('id',$firstId->id)->increment('points',$finalpoints*4);
-        }
-        if($secondId){
-            $authPoint = User::where('id',$secondId->id)->increment('points',$finalpoints*3);
-        }
-        if($thirdId){
-            $authPoint = User::where('id',$thirdId->id)->increment('points',$finalpoints*2);
-        }
-        if($forthId){
-            $authPoint = User::where('id',$forthId->id)->increment('points',$finalpoints*1);
-        }
+        // if($firstId){
+        //     $authPoint = User::where('id',$firstId->id)->increment('points',$finalpoints*4);
+        // }
+        // if($secondId){
+        //     $authPoint = User::where('id',$secondId->id)->increment('points',$finalpoints*3);
+        // }
+        // if($thirdId){
+        //     $authPoint = User::where('id',$thirdId->id)->increment('points',$finalpoints*2);
+        // }
+        // if($forthId){
+        //     $authPoint = User::where('id',$forthId->id)->increment('points',$finalpoints*1);
+        // }
 		$user = User::create($data);
         return redirect()->back();
 	}

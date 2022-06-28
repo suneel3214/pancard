@@ -5,7 +5,7 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                  <img src="{{asset('backend/images/faces/user-img.webp')}}" alt="profile">
+                  <img src="{{asset('backend/images/faces/user-img.png')}}" alt="profile">
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>
@@ -55,7 +55,7 @@
               <div class="collapse" id="master">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route('packages.create')}}">Package</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="#">Services</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('services.index')}}">Services</a></li>
                 </ul>
               </div>
             </li>

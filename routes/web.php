@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\ServiceController;
+
 
 
 
@@ -41,11 +43,16 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/role/index',[App\Http\Controllers\Admin\RoleController::class,'index'])->name('admin.role');
+    Route::get('/edit-percent_amount/{id}',[App\Http\Controllers\Admin\RoleController::class,'edit'])->name('role.percentage.edit');
+    Route::put('/role-update',[App\Http\Controllers\Admin\RoleController::class,'percentAmount'])->name('role.update');
+
     Route::get('/admin/all_user/index',[App\Http\Controllers\Admin\UserController::class,'allUsers'])->name('admin.all.users');
     Route::get('export', [App\Http\Controllers\Admin\UserController::class, 'export'])->name('export');
     Route::resource('packages', 'App\Http\Controllers\Admin\PackageController');
     Route::get('/edit-package/{id}',[App\Http\Controllers\Admin\PackageController::class,'package_edit'])->name('package.edit');
     Route::put('/package-update',[App\Http\Controllers\Admin\PackageController::class,'updatePackage'])->name('package.update');
+
+    Route::resource('services', 'App\Http\Controllers\Admin\ServiceController');
 
 
 });

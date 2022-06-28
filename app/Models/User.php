@@ -62,4 +62,12 @@ class User extends Authenticatable
         return  $this->belongsTo(User::class , 'created_by','id');
     }
     
+    public function children()
+    {
+        return $this->hasMany(User::class, 'created_by', 'id');
+    }
+    public function parent()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }

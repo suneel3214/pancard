@@ -21,14 +21,8 @@ class RoleRepository extends BaseRepository
     {
         $data = Role::all();
 
-        $data = Role::select('*')->where('id', '!=', Auth::id())->get();
-
-        if(Auth::check()){
-            return $data;
-        }
-        else{
-            return $data;
-        }
+        return $data;
     }
+    
 
 }

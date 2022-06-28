@@ -87,35 +87,66 @@ class UserRepository extends BaseRepository
 
         $data['password'] = Hash::make($request->password);
         $userId = User::where('referal_code',$request->referal_code)->first();
+      
         $reference = $userId->id;
-        $user_id = $userId->user_type;
+        $userRoleId = $userId->user_type;
+        $data['created_by'] = $reference;        
+        $count=1;
 
-        $data['created_by'] = $reference;
-        // $authId = Auth::user()->id;
-        // $userParentsData = User::where('id', $reference )->with('creates')->first();
-        // $admin = User::where('id',1)->first();
-        // dd($userParentsData);
-        // $firstId = $userParentsData->creates->creates->creates;
-        // $secondId = $userParentsData->creates->creates;
-        // $thirdId = $userParentsData->creates;
-        // $forthId = $userParentsData;
-        // $point = Role::where('id',$user_id)->first();
-        // $receviePoints = $point->percentage_amount;
-        // $finalpoints =  $receviePoints*100/100;
-        // dd($finalpoints);
-
-        // if($firstId){
-        //     $authPoint = User::where('id',$firstId->id)->increment('points',$finalpoints*4);
-        // }
-        // if($secondId){
-        //     $authPoint = User::where('id',$secondId->id)->increment('points',$finalpoints*3);
-        // }
-        // if($thirdId){
-        //     $authPoint = User::where('id',$thirdId->id)->increment('points',$finalpoints*2);
-        // }
-        // if($forthId){
-        //     $authPoint = User::where('id',$forthId->id)->increment('points',$finalpoints*1);
-        // }
+        while($userRoleId >= $count){
+            $userData = ''; 
+            if($count === 5){
+                if(isset($userId->creates->creates->creates->creates->user_type)){
+                    $userData = $userId->creates->creates->creates->creates;
+                    if($userRoleId === $userId->creates->creates->creates->creates->user_type){
+                        $userData->increment('points',((float)$userId->roles->percentage_amount * (5-$userRoleId) ));                
+                    }else{
+                        $userData->increment('points',(float)$userId->creates->creates->creates->creates->roles->percentage_amount);                
+                    }
+                }
+               
+            }                       
+            if($count === 4){
+                if(isset($userId->creates->creates->creates->user_type)){
+                    $userData = $userId->creates->creates->creates;
+                    if($userRoleId === $userId->creates->creates->creates->user_type){
+                        $userData->increment('points',((float)$userId->roles->percentage_amount * (5-$userRoleId) ));                
+                    }else{
+                        $userData->increment('points',(float)$userId->creates->creates->creates->roles->percentage_amount);                
+                    }
+                }
+               
+            }
+            if($count === 3){
+                if(isset($userId->creates->creates->user_type)){
+                    $userData = $userId->creates->creates;                              
+                    if($userRoleId === $userId->creates->creates->user_type){                   
+                        $userData->increment('points',((float)$userId->roles->percentage_amount * (5-$userRoleId)));                
+                    }else{                    
+                        $userData->increment('points',(float)$userId->creates->creates->roles->percentage_amount);                
+                    }                           
+                }
+            }
+            if($count === 2){
+                if(isset($userId->creates->user_type)){
+                    $userData = $userId->creates;
+                    if($userRoleId === $userId->creates->user_type){
+                        $userData->increment('points',((float)$userId->roles->percentage_amount * (5-$userRoleId)));                
+                    }else{
+                        $userData->increment('points',(float)$userId->creates->roles->percentage_amount);                
+                    }                
+                }
+            }
+            if($count === 1){
+                $userData = $userId;
+                if($userRoleId === $userData->user_type){
+                    $userData->increment('points',((float)$userId->roles->percentage_amount * (5-$userRoleId)));                
+                }else{
+                    $userData->increment('points',(float)$userId->roles->percentage_amount);                
+                }                
+            }
+            $count++;
+        }
 		$user = User::create($data);
         return redirect()->back();
 	}

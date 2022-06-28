@@ -16,7 +16,6 @@
                     <span class="h1 fw-bold mb-0 text-center"><img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                     style="width: 185px;" alt="logo"></span>
                   </div>
-
                   <h5 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 1px;">Register your account</h5>
                    <div class="row">
                        <div class="col-md-6">
@@ -28,26 +27,26 @@
                        </div>
                        <div class="col-md-6">
                           <div class="form-outline mb-4">
-                            <label class="form-label" for="">Email address</label>
-                            <input type="email" id="email"  class="form-control" name="email" value="{{ old('email') }}"  placeholder="Email" />
-                            <small class="text-danger">@error('email'){{$message}}@enderror</small>
+                            <label class="form-label" for="">Referal Code</label>
+                            <input  placeholder="Referal Code" id="referal_code" type="text" class="form-control" name="referal_code" />
+                            <small class="text-danger">@error('referal_code'){{$message}}@enderror</small>
                           </div>
+                         
                        </div>
                    </div>
-
                    <div class="row">
                        <div class="col-md-6">
                           <div class="form-outline mb-4">
                               <label class="form-label" for="">Mobile</label>
-                              <input type="text" id="mobile" placeholder="Mobile" name="mobile" class="form-control"  />
+                              <input type="number" id="mobile" placeholder="Mobile" name="mobile" class="form-control"  />
                               <small class="text-danger">@error('mobile'){{$message}}@enderror</small>
                           </div>
                        </div>
                        <div class="col-md-6">
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="">State</label>
-                            <input type="text" id="state" placeholder="State" name="state" class="form-control" />
-                            <small class="text-danger">@error('state'){{$message}}@enderror</small>
+                         <div class="form-outline mb-4">
+                            <label class="form-label" for="">Email address</label>
+                            <input type="email" id="email"  class="form-control" name="email" value="{{ old('email') }}"  placeholder="Email" />
+                            <small class="text-danger">@error('email'){{$message}}@enderror</small>
                           </div>
                        </div>
                    </div>
@@ -80,10 +79,10 @@
                           </div>
                        </div>
                        <div class="col-md-6">
-                          <div class="form-outline mb-4">
-                            <label class="form-label" for="">Referal Code</label>
-                            <input  placeholder="Referal Code" id="referal_code" type="text" class="form-control" name="referal_code" />
-                            <small class="text-danger">@error('referal_code'){{$message}}@enderror</small>
+                         <div class="form-outline mb-4">
+                            <label class="form-label" for="">State</label>
+                            <input type="text" id="state" placeholder="State" name="state" class="form-control" />
+                            <small class="text-danger">@error('state'){{$message}}@enderror</small>
                           </div>
                        </div>
                    </div>

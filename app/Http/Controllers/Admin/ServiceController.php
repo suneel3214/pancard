@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Repositories\Admin\ServiceRepository;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ServiceController extends Controller
 {
@@ -12,6 +14,11 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $serviceRepo;
+
+    public function __construct(ServiceRepository $serviceRepo){
+        $this->serviceRepo = $serviceRepo;
+    }
     public function index()
     {
         return view('backend.master.service.index');
@@ -35,7 +42,9 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $service = $this->serviceRepo->seriveStore($request);
+       Alert::success('Success', 'Service Add Successfully');
+       return redirect()->route('services.index');  
     }
 
     /**

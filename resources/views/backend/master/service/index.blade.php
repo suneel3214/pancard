@@ -81,20 +81,19 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    <form method="POST" action="{{route('services.store')}}" id="regForm">
+                    <form method="POST" action="{{route('services.store')}}" id="regForm" enctype="multipart/form-data">
                         @csrf
                         <div class="form-outline mb-4">
                         <label class="form-label" for="">Service Name <span class="text-danger">*</span></label>
                         <input type="text" name="service_name" id="service_name" placeholder="Service Name" class="form-control" />
                         </div>
-
-                        <div class="form-outline mb-4">
-                        <label class="form-label" for="">Description <span class="text-danger">*</span></label>
-                        <input type="text" name="description" id="description" placeholder="Description" class="form-control" />
-                        </div>
                         <div class="form-outline mb-4">
                         <label class="form-label" for="">Icon <span class="text-danger">*</span></label>
-                        <input type="file" name="icon"  id="icon" class="form-control" />
+                        <input type="file" name="image"  id="icon" class="form-control" />
+                        </div>
+                        <div class="form-outline mb-4">
+                        <label class="form-label" for="">Description <span class="text-danger">*</span></label>
+                        <textarea class="summernote" name="description" id="textarea"></textarea>
                         </div>
                         <div class="d-flex justify-content-center">
                         <button type="submit"
@@ -106,7 +105,14 @@
                 </div>
             </div>
           <!-- content-wrapper ends -->
-   
+          <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+          <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+                <!-- content-wrapper ends -->
+          <script type="text/javascript">
+          $(document).ready(function() {
+          $('.summernote').summernote();
+          });
+          </script>
 @extends('partial.footer')
 
 @endsection

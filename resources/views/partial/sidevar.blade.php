@@ -11,7 +11,9 @@
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
                   <span class="font-weight-bold mb-2">{{ Auth::user()->name }}</span>
+                  @if(Auth::user()->user_type != 5)
                   <span class="text-secondary text-small">Referal-code:- {{ Auth::user()->referal_code }}</span>
+                  @endif
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>

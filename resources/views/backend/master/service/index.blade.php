@@ -4,6 +4,15 @@
 
 @section('content')
 @include('sweetalert::alert')
+<style>
+  .btn-icon{
+    background-color:#fff;
+    border:none;
+  }
+  .fa-solid{
+    color:#000;
+  }
+</style>
 <div class="main-panel" style="width:100% !important">
           <div class="content-wrapper">
             <div class="page-header">
@@ -34,37 +43,29 @@
                                 <tr>
                                 <th>#</th>
                                 <th>Service</th>
-                                <th>Created By</th>
-                                <th>Icon</th>
                                 <th>Description</th>
+                                <th>Icon</th>
                                 <th>Action</th>
                                 </tr>
                               </thead>
-                             {{-- <?php $count = 1; ?>
-                              @if(isset($data))
-                              @foreach($data as $item)
-                              @if($authId == $item->created_by)
+                             <?php $count = 1; ?>
+                              @if(isset($service))
+                              @foreach($service as $services)
                                   <tbody>
                                       <tr>
                                       <td>{{$count ++}}</td>
-                                      <td>{{$item->name}}</td>
-                                      <td>{{$item->email}}</td>
-                                      <td><span class="role-style">{{$item->roles ? $item->roles->display_name : ''}}</span></td>
-                                      <td>{{$item->mobile}}</td>
-                                      <td>{{$item->state}}</td>
+                                      <td>{{$services->service_name}}</td>
+                                      <td><div>{!!Str::words($services->description,40)!!}</div></td>
+                                      <td><img src="{{asset('/image/'.$services->image)}}" style="width:40%;" alt=""></td>
                                       <td>
-                                      @if($item->status == 1)
-                                        <a href="{{route('admin.activate', $item->id)}}" style="width: 102px" class="btn btn-success btn-sm">Activate</a>
-                                        @else
-                                        <a href="{{route('admin.activate', $item->id)}}" class="btn btn-danger btn-sm">UnActivate</a>
-                                      @endif
-                                      <a href="{{route('admin.user.edit',$item->id)}}" class="btn btn-info btn-sm">Edit</a>
+                                        <button class="btn btn-success btn-sm btn-icon" data-bs-toggle="modal" data-bs-target="#viewModal"><i class="fa-solid fa-eye"></i></button>
+                                        <button class="btn btn-info btn-sm btn-icon"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button class="btn btn-danger btn-sm btn-icon"><i class="fa-solid fa-trash"></i></button>
                                       </td>
                                       </tr>
                                   </tbody>
-                              @endif
                               @endforeach
-                              @endif --}}
+                              @endif 
                             </table>
                           </div>
                      </div>
@@ -72,7 +73,7 @@
                 </div>
             </div>
           </div>
-          <!-- Modal -->
+          <!-- Modal create-->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -85,11 +86,11 @@
                         @csrf
                         <div class="form-outline mb-4">
                         <label class="form-label" for="">Service Name <span class="text-danger">*</span></label>
-                        <input type="text" name="service_name" id="service_name" placeholder="Service Name" class="form-control" />
+                        <input type="text" name="service_name" id="service_name" placeholder="Service Name" class="form-control" required />
                         </div>
                         <div class="form-outline mb-4">
                         <label class="form-label" for="">Icon <span class="text-danger">*</span></label>
-                        <input type="file" name="image"  id="icon" class="form-control" />
+                        <input type="file" name="image"  id="icon" class="form-control" required/>
                         </div>
                         <div class="form-outline mb-4">
                         <label class="form-label" for="">Description <span class="text-danger">*</span></label>
@@ -100,6 +101,33 @@
                             class="btn  btn-sm my-btn">Add</button>
                         </div>
                     </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal create-->
+            <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">VIew</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <table  class="table">
+                  <tr>
+                    <th>Service Name:</th>
+                    <td><span id="name"></span></td>
+                  </tr>
+                  <tr>
+                    <th>Description:</th>
+                    <td><span id="country"></td>
+                  </tr>
+                  <tr>
+                    <th>Image:</th>
+                    <td><span id="about"></span></td>
+                  </tr>
+                </table>
                     </div>
                     </div>
                 </div>
@@ -116,3 +144,4 @@
 @extends('partial.footer')
 
 @endsection
+

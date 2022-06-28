@@ -21,7 +21,9 @@ class ServiceController extends Controller
     }
     public function index()
     {
-        return view('backend.master.service.index');
+        $service = $this->serviceRepo->serviceGet();
+        // dd($service);
+        return view('backend.master.service.index',compact('service'));
     }
 
     /**

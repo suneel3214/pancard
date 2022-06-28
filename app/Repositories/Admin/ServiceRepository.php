@@ -33,7 +33,9 @@ class ServiceRepository extends BaseRepository
      }
       
      public function serviceGet(){
-      
+      $service = Service::with('creates')->orderBy('id', 'desc')->get();
+      // dd($service);
+      return $service;
      }
    
 }

@@ -97,7 +97,12 @@ class ServiceController extends Controller
         $service = Service::find($service_id);
         $service->service_name = $request->input('service_name');
         $service->description = $request->input('description');
-
+        if ($image = $request->file('image')) {
+            $destinationPath = 'image/';
+            $iconImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $iconImage);
+            $service['image'] = "$iconImage";
+        }
         $service->update();
         Alert::success('Success', 'Updated Successfully');
         return redirect()->route('services.index');  
@@ -108,8 +113,11 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Service $service)
     {
-        //
+        $service->delete();
+    
+        Alert::success('Deleted', 'Deleted Successfully');
+        return redirect()->route('services.index');
     }
 }

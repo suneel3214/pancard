@@ -27,12 +27,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'state',
+        'state_id',
         'mobile',
         'user_type',
         'points',
         'created_by',
-        'referal_code'
+        'referal_code',
+        'username',
+        'pan_no',
+        'aadhar_no',
+        'shop_name',
+        'district'
     ];
 
     /**

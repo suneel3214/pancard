@@ -29,6 +29,10 @@
     height: 100px;
     border-radius: 100%;
   }
+  .style-btn{
+    border: navajowhite;
+    background-color: #fff;
+  }
 </style>
 <div class="main-panel" style="width:100% !important">
           <div class="content-wrapper">
@@ -77,8 +81,12 @@
                                       </div></td>
                                       <td><img src="{{asset('/image/'.$services->image)}}" style="width:40%;" alt=""></td>
                                       <td>
-                                        <button value="{{$services->id}}" class="btn btn-info btn-sm btn-icon edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
-                                        <button class="btn btn-danger btn-sm btn-icon"><i class="fa-solid fa-trash"></i></button>
+                                        <button value="{{$services->id}}" class="style-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <form action="{{ route('services.destroy',$services->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="style-btn"><i class="fa-solid fa-trash"></i></button>
+                                        </form>
                                       </td>
                                       </tr>
                                   </tbody>

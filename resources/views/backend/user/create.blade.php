@@ -30,38 +30,87 @@
               </div><hr>
               <div class="container">
                   <div class="row">
-                     <div class="col-md-3"></div>
-                     <div class="col-md-6">
+                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
                                 <form method="POST" action="{{route('admin.user.create')}}" id="regForm">
                                     @csrf
-                                    <div class="form-outline mb-4">
-                                    <label class="form-label" for="">Your Name <span class="text-danger">*</span></label>
-                                    <input type="text" name="name" id="name" placeholder="Name" class="form-control" />
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="">Your Name <span class="text-danger">*</span></label>
+                                            <input type="text" name="name" id="name" placeholder="Name" class="form-control" />
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                        <div class="form-outline mb-4">
+                                          <label class="form-label" for="">Your Email <span class="text-danger">*</span></label>
+                                          <input type="email" name="email" id="email" placeholder="Email" class="form-control" />
+                                          <small class="text-danger">@error('email'){{$message}}@enderror</small>
+                                        </div>
+                                       </div>
                                     </div>
-
-                                    <div class="form-outline mb-4">
-                                    <label class="form-label" for="">Your Email <span class="text-danger">*</span></label>
-                                    <input type="email" name="email" id="email" placeholder="Email" class="form-control" />
-                                    <small class="text-danger">@error('email'){{$message}}@enderror</small>
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="">Password <span class="text-danger">*</span></label>
+                                            <input type="password" name="password" placeholder="Password" id="password" class="form-control" />
+                                            <small class="text-danger">@error('password'){{$message}}@enderror</small>
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="form-outline mb-4">
+                                              <label class="form-label" for="">Confirm Password <span class="text-danger">*</span></label>
+                                              <input type="password" name="password_confirmation" placeholder="Confirm Password" id="confirm-password" class="form-control" />
+                                          </div>
+                                       </div>
                                     </div>
-                                    <div class="form-outline mb-4">
-                                    <label class="form-label" for="">Password <span class="text-danger">*</span></label>
-                                    <input type="password" name="password" placeholder="Password" id="password" class="form-control" />
-                                    <small class="text-danger">@error('password'){{$message}}@enderror</small>
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="">Pancard Number<span class="text-danger">*</span></label>
+                                            <input type="text" id="pan_no" name="pan_no" placeholder="Pancard number" class="form-control" />
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="">Aadhar Number <span class="text-danger">*</span></label>
+                                            <input type="text" id="aadhar_no" name="aadhar_no" onKeyPress="if(this.value.length==12) return false;" placeholder="Aadhar Number" class="form-control" />
+                                          </div>
+                                       </div>
                                     </div>
-                                    <div class="form-outline mb-4">
-                                    <label class="form-label" for="">Confirm Password <span class="text-danger">*</span></label>
-                                    <input type="password" name="password_confirmation" placeholder="Confirm Password" id="confirm-password" class="form-control" />
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="">Shop Name<span class="text-danger">*</span></label>
+                                            <input type="text" id="shop_name" name="shop_name" placeholder="Shop name" class="form-control" />
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="">District <span class="text-danger">*</span></label>
+                                            <input type="text" id="district" name="district" placeholder="District" class="form-control" />
+                                          </div>
+                                       </div>
                                     </div>
-                                    <div class="form-outline mb-4">
-                                    <label class="form-label" for="">Mobile <span class="text-danger">*</span></label>
-                                    <input type="number" id="mobile" onKeyPress="if(this.value.length==12) return false;" name="mobile" placeholder="Mobile" class="form-control" />
-                                    </div>
-                                    <div class="form-outline mb-4">
-                                    <label class="form-label" for="">State <span class="text-danger">*</span></label>
-                                    <input type="text" id="state" name="state" placeholder="State" class="form-control" />
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="">Mobile <span class="text-danger">*</span></label>
+                                            <input type="number" id="mobile" onKeyPress="if(this.value.length==12) return false;" name="mobile" placeholder="Mobile" class="form-control" />
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="form-outline mb-4">
+                                            <label class="form-label" for="">State <span class="text-danger">*</span></label>
+                                            <select name="state_id" id="state" class="form-control select-type">
+                                                <option value="">Select Role</option>
+                                                @foreach($state as $states)
+                                                <option value="{{$states->id}}">{{$states->name}}</option>
+                                                @endforeach
+                                            </select>
+                                          </div>
+                                       </div>
                                     </div>
                                     <div class="form-outline mb-4">
                                     <label class="form-label" for="">Role <span class="text-danger">*</span></label>
@@ -82,7 +131,6 @@
                             </div>
                         </div>
                      </div> 
-                     <div class="col-md-3"></div>
                   </div>
               </div>
           </div>
@@ -97,8 +145,11 @@
                     email: "required",
                     password: "required",
                     user_type:"required",
-                    state:"required"
-
+                    state:"required",
+                    pan_no:"required",
+                    aadhar_no:"required",
+                    district:"required",
+                    shop_name:"required",
                 }
             });
         });

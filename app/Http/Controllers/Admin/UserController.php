@@ -8,6 +8,7 @@ use App\Repositories\Admin\UserRepository;
 use Auth;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\State;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -63,7 +64,8 @@ class UserController extends Controller
     public function create(){
         $user_id = Auth::user()->user_type;
         $role = $this->userRepo->getRole();
-        return view('backend.user.create',compact('user_id','role'));
+        $state = State::all();       
+        return view('backend.user.create',compact('user_id','role','state'));
     }
 
     public function store(Request $request)

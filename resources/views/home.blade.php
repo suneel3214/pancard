@@ -62,10 +62,10 @@
                 <div class="card bg-gradient-service1 card-img-holder text-white card-h shadow-lg">
                   <div class="card-body">
                     <!-- <img src="{{asset('backend/images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image" /> -->
-                    <h3 class="font-weight-normal mb-3">Mobile
-                    <i class="fas fa-mobile-alt" style="color:white"></i>
+                    <h3 class="font-weight-normal mb-3">PSA Login
+                    <i class="fa fa-location-arrow" style="color:white"></i>
                     </h3>
-                    <a href="#" class="text-d"><h6 class="mb-5 text-white">Recharge</h6></a>
+                    <a href="https://www.psaonline.utiitsl.com/psaonline/showLogin" target="_blank" class="text-d"><h6 class="mb-5 text-white">UTIITSL</h6></a>
                   </div>
                 </div>
               </div>

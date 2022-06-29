@@ -1,6 +1,6 @@
 <footer id="contact">
     <div class="container">
-      <div class="row">
+      {{--<div class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading">
             <h4>Join our mailing list to receive the news &amp; latest trends</h4>
@@ -22,7 +22,7 @@
             </div>
           </form>
         </div>
-      </div>
+      </div>--}}
       <div class="row">
         <div class="col-lg-3">
           <div class="footer-widget">

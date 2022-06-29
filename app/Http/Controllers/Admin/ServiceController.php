@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Admin\ServiceRepository;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Service;
 
 class ServiceController extends Controller
 {
@@ -57,7 +58,9 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        //
+        $service = Service::find($id);
+
+        return view('backend.master.service.show',compact('service'));
     }
 
     /**
@@ -66,9 +69,13 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function service_edit($id)
     {
-        //
+        $service = Service::find($id);
+        return response()->json([
+            'status'=>200,
+            'service'=> $service,
+        ]);
     }
 
     /**
@@ -83,6 +90,18 @@ class ServiceController extends Controller
         //
     }
 
+    
+    public function updateService(Request $request)
+    {
+        $service_id = $request->input('id');
+        $service = Service::find($service_id);
+        $service->service_name = $request->input('service_name');
+        $service->description = $request->input('description');
+
+        $service->update();
+        Alert::success('Success', 'Updated Successfully');
+        return redirect()->route('services.index');  
+    }
     /**
      * Remove the specified resource from storage.
      *

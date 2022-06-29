@@ -12,6 +12,23 @@
   .fa-solid{
     color:#000;
   }
+  
+  .ser-img{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+  }
+  .read-btn{
+    color: #000;
+    background: none;
+    border: none;
+    font-weight: 700;
+  }
+  .service-img{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+  }
 </style>
 <div class="main-panel" style="width:100% !important">
           <div class="content-wrapper">
@@ -55,11 +72,12 @@
                                       <tr>
                                       <td>{{$count ++}}</td>
                                       <td>{{$services->service_name}}</td>
-                                      <td><div>{!!Str::words($services->description,40)!!}</div></td>
+                                      <td><div>{{Str::limit($services->description, 50)}}
+                                      <button type="button" class="showbtn read-btn" value="{{$services->id}}">Read more</button>
+                                      </div></td>
                                       <td><img src="{{asset('/image/'.$services->image)}}" style="width:40%;" alt=""></td>
                                       <td>
-                                        <button class="btn btn-success btn-sm btn-icon" data-bs-toggle="modal" data-bs-target="#viewModal"><i class="fa-solid fa-eye"></i></button>
-                                        <button class="btn btn-info btn-sm btn-icon"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button value="{{$services->id}}" class="btn btn-info btn-sm btn-icon edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
                                         <button class="btn btn-danger btn-sm btn-icon"><i class="fa-solid fa-trash"></i></button>
                                       </td>
                                       </tr>
@@ -82,7 +100,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    <form method="POST" action="{{route('services.store')}}" id="regForm" enctype="multipart/form-data">
+                    <form method="POST" action="" id="regForm" enctype="multipart/form-data">
                         @csrf
                         <div class="form-outline mb-4">
                         <label class="form-label" for="">Service Name <span class="text-danger">*</span></label>
@@ -94,7 +112,7 @@
                         </div>
                         <div class="form-outline mb-4">
                         <label class="form-label" for="">Description <span class="text-danger">*</span></label>
-                        <textarea class="summernote" name="description" id="textarea"></textarea>
+                        <textarea class="form-control" rows="5" name="description" id="textarea"></textarea>
                         </div>
                         <div class="d-flex justify-content-center">
                         <button type="submit"
@@ -110,38 +128,101 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">VIew</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Description</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                    <table  class="table">
-                  <tr>
-                    <th>Service Name:</th>
-                    <td><span id="name"></span></td>
-                  </tr>
-                  <tr>
-                    <th>Description:</th>
-                    <td><span id="country"></td>
-                  </tr>
-                  <tr>
-                    <th>Image:</th>
-                    <td><span id="about"></span></td>
-                  </tr>
-                </table>
-                    </div>
+                      <div class="modal-body" id="readMore">
+                      
+                      </div>
                     </div>
                 </div>
             </div>
-          <!-- content-wrapper ends -->
-          <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-          <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-                <!-- content-wrapper ends -->
-          <script type="text/javascript">
-          $(document).ready(function() {
-          $('.summernote').summernote();
-          });
-          </script>
-@extends('partial.footer')
 
+             <!--Edit Modal -->
+             <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Package Edit</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="text-center">
+                                      <img src="#" class="service-img shadow" id="image" alt="">
+                                    </div>
+                                    <form method="POST" action="{{route('service.update')}}" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="form-outline mb-4">
+                                            <input type="hidden" name="id" id="service_id" value="">
+                                        <label class="form-label" for="">Service Name <span class="text-danger">*</span></label>
+                                        <input type="text" name="service_name" required id="s-name" placeholder="Service Name" class="form-control" />
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Icon <span class="text-danger">*</span></label>
+                                        <input type="file" name="image"  id="icon" class="form-control"/>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                        <label class="form-label" for="">Description <span class="text-danger">*</span></label>
+                                        <textarea class="form-control" rows="5" required name="description" id="description"></textarea>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                        <button type="submit"
+                                            class="btn  btn-sm my-btn">Update</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Edit Modal End -->
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+            <script>
+            $(document).ready(function() {
+
+                $(document).on('click' , '.showbtn' , function() {
+                    var id = $(this).val();  
+                    // alert(id);    
+                    $.ajax({
+
+                        type: "GET",
+                        url: "/services/"+id,
+                        success: function(response){
+                            $('#readMore').html(response)
+                            $('#viewModal').modal('show');
+                      }
+                    });
+                });
+            });
+            </script>
+             <script>
+              $(document).ready(function() {
+                    $(document).on('click','.edit-btn',function (){
+                      var service_id = $(this).val();
+                      // alert(service_id);
+                      var baseUrl = "{{URL::to('/image')}}" + '/';
+                      $('#edit-modal').modal('show');
+
+                      $.ajax({
+                          type: "GET",
+                          url: "/edit-service/"+service_id,
+                          success: function (response){
+                              console.log(response);
+                              $('#s-name').val(response.service.service_name);
+                              $('#image').attr('src',baseUrl + response.service.image);
+                              $('#description').val(response.service.description);
+                              $('#service_id').val(service_id);
+                          }
+                      })
+                    })
+                  });
+            </script>
+@extends('partial.footer')
 @endsection
 

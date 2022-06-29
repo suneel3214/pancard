@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="form-outline mb-4">
                                     <label class="form-label" for="">Mobile <span class="text-danger">*</span></label>
-                                    <input type="text" id="mobile" name="mobile" placeholder="Mobile" class="form-control" />
+                                    <input type="number" id="mobile" onKeyPress="if(this.value.length==12) return false;" name="mobile" placeholder="Mobile" class="form-control" />
                                     </div>
                                     <div class="form-outline mb-4">
                                     <label class="form-label" for="">State <span class="text-danger">*</span></label>

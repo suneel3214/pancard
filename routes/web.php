@@ -53,6 +53,9 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::put('/package-update',[App\Http\Controllers\Admin\PackageController::class,'updatePackage'])->name('package.update');
 
     Route::resource('services', 'App\Http\Controllers\Admin\ServiceController');
+    Route::get('/edit-service/{id}',[App\Http\Controllers\Admin\ServiceController::class,'service_edit'])->name('service.edit');
+    Route::put('/service-update',[App\Http\Controllers\Admin\ServiceController::class,'updateService'])->name('service.update');
+
 
 
 });

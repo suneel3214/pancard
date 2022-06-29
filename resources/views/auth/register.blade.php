@@ -38,7 +38,7 @@
                        <div class="col-md-6">
                           <div class="form-outline mb-4">
                               <label class="form-label" for="">Mobile</label>
-                              <input type="number" id="mobile" placeholder="Mobile" name="mobile" class="form-control"  />
+                              <input type="number" onKeyPress="if(this.value.length==12) return false;" id="mobile" placeholder="Mobile" name="mobile" class="form-control"  />
                               <small class="text-danger">@error('mobile'){{$message}}@enderror</small>
                           </div>
                        </div>

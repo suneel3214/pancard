@@ -92,14 +92,14 @@ class UserRepository extends BaseRepository
         $userRoleId = $userId->user_type;
         $data['created_by'] = $reference;        
         $count=1;
-
+        
         while($userRoleId >= $count){
             $userData = ''; 
             if($count === 5){
-                if(isset($userId->creates->creates->creates->creates->user_type)){
+                if(isset($userId->creates->creates->creates->creates->user_type )){
                     $userData = $userId->creates->creates->creates->creates;
                     if($userRoleId === $userId->creates->creates->creates->creates->user_type){
-                        $userData->increment('points',((float)$userId->roles->percentage_amount * (5-$userRoleId) ));                
+                        $userData->increment('points',((float)$userId->roles->percentage_amount * ((int)$data['user_type'] - $userRoleId) ));                
                     }else{
                         $userData->increment('points',(float)$userId->creates->creates->creates->creates->roles->percentage_amount);                
                     }
@@ -110,7 +110,7 @@ class UserRepository extends BaseRepository
                 if(isset($userId->creates->creates->creates->user_type)){
                     $userData = $userId->creates->creates->creates;
                     if($userRoleId === $userId->creates->creates->creates->user_type){
-                        $userData->increment('points',((float)$userId->roles->percentage_amount * (5-$userRoleId) ));                
+                        $userData->increment('points',((float)$userId->roles->percentage_amount * ((int)$data['user_type'] - $userRoleId) ));                
                     }else{
                         $userData->increment('points',(float)$userId->creates->creates->creates->roles->percentage_amount);                
                     }
@@ -121,7 +121,7 @@ class UserRepository extends BaseRepository
                 if(isset($userId->creates->creates->user_type)){
                     $userData = $userId->creates->creates;                              
                     if($userRoleId === $userId->creates->creates->user_type){                   
-                        $userData->increment('points',((float)$userId->roles->percentage_amount * (5-$userRoleId)));                
+                        $userData->increment('points',((float)$userId->roles->percentage_amount * ((int)$data['user_type'] - $userRoleId)));                
                     }else{                    
                         $userData->increment('points',(float)$userId->creates->creates->roles->percentage_amount);                
                     }                           
@@ -131,7 +131,7 @@ class UserRepository extends BaseRepository
                 if(isset($userId->creates->user_type)){
                     $userData = $userId->creates;
                     if($userRoleId === $userId->creates->user_type){
-                        $userData->increment('points',((float)$userId->roles->percentage_amount * (5-$userRoleId)));                
+                        $userData->increment('points',((float)$userId->roles->percentage_amount * ((int)$data['user_type'] - $userRoleId)));                
                     }else{
                         $userData->increment('points',(float)$userId->creates->roles->percentage_amount);                
                     }                
@@ -140,7 +140,7 @@ class UserRepository extends BaseRepository
             if($count === 1){
                 $userData = $userId;
                 if($userRoleId === $userData->user_type){
-                    $userData->increment('points',((float)$userId->roles->percentage_amount * (5-$userRoleId)));                
+                    $userData->increment('points',((float)$userId->roles->percentage_amount * ((int)$data['user_type'] - $userRoleId)));                
                 }else{
                     $userData->increment('points',(float)$userId->roles->percentage_amount);                
                 }                

@@ -18,6 +18,8 @@
     <h4>Email:- <strong>{{ $data['email'] }}</strong></h4>
     <h4>Password:- <strong>{{ $data['password'] }}</strong></h4>
     <h4>Referal Code:- <strong>{{ $data['referal_code'] }}</strong></h4>
+    <h4>PSA ID:- <strong>{{ $data['username'] }}</strong></h4>
+    <h4>PSA PASSWORD:- <strong>{{ $data['username'] }}</strong></h4>
 
     @if($data['user_type'] == 2)
     <h4>Role:- <strong>Master Admin</strong></h4>
@@ -37,6 +39,9 @@
 
     <button class="btn btn-success btn-sm">
        <a href="{{ url('http://pan.hithere.co.nz/') }}" style='color: #fff;text-decoration: none;' class="">Go to Website</a>
+    </button><br><br>
+    <button class="btn btn-success btn-sm">
+       <a href="{{ url('https://www.psaonline.utiitsl.com/psaonline/showLogin') }}" style='width:100%;color: #fff;text-decoration: none;' class="">Go to Utiitsl website</a>
     </button>
     <br><br>
     <p>Thank you</p><br>

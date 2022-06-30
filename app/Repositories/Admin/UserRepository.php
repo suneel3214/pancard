@@ -71,12 +71,11 @@ class UserRepository extends BaseRepository
     public function userStore($request){
         $generateCode = 'PCS';
 		$data = $request->all();
-        // dd($data);
         $data['referal_code'] = $this->generateUniqueCode();
+        $data['username'] = $generateCode.$request->mobile;
         Mail::to($request->email)->send(new MyTestMail($data));
         $data['password'] = Hash::make($request->password);
         $data['created_by'] = Auth::user()->id;
-        $data['username'] = $generateCode.$request->mobile;
         // dd($data);
         $dataApi = [
             "api_key"=>'e5e27c-f8edec-6bbfa6-e5e996-51bf0d',
@@ -101,11 +100,11 @@ class UserRepository extends BaseRepository
 	}
 
     public function userRegister($request){
-       
+        $generateCode = 'PCS';
 		$data = $request->all();
         $data['referal_code'] = $this->generateUniqueCode();
+        $data['username'] = $generateCode.$request->mobile;
         Mail::to($request->email)->send(new MyTestMail($data));
-
         $data['password'] = Hash::make($request->password);
         $userId = User::where('referal_code',$request->referal_code)->first();
       
@@ -168,6 +167,21 @@ class UserRepository extends BaseRepository
             }
             $count++;
         }
+        $dataApi = [
+            "api_key"=>'e5e27c-f8edec-6bbfa6-e5e996-51bf0d',
+            'vle_id'=>$data['username'],
+            "vle_name"=>  $data['name'],
+            "vle_mob"=>$data['mobile'],
+            "vle_email"=>$data['email'],
+            "vle_shop"=> $data['shop_name'],
+            "vle_loc"=>$data['district'],
+            "vle_state"=>(int)$data['state_id'],
+            "vle_pan"=>$data['pan_no'],
+            "vle_uid"=>$data['aadhar_no'],
+            "vle_pin"=>$request->password
+        ];
+             
+        $api = Curlhelpers::vle_create($dataApi);
 		$user = User::create($data);
         return redirect()->back();
 	}

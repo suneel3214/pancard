@@ -27,6 +27,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/user/create',[App\Http\Controllers\Admin\UserController::class,'register'])->name('user.create');
+Route::get('/user/register',[App\Http\Controllers\Admin\UserController::class,'userRegister'])->name('user.register');
+
 Route::resource('contacts', 'App\Http\Controllers\Frontend\ContactUsController');
 
 Route::group(['middleware' => ['auth']], function() {

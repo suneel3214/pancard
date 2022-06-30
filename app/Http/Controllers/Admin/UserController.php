@@ -88,13 +88,22 @@ class UserController extends Controller
         
     }
 
+    public function userRegister(){
+        $state = State::all();       
+        return view('frontend.register',compact('state'));
+    }
+
     public function register(Request $request)
     { 
         $request->validate([
         'name' => 'required',
         'mobile' => 'required|unique:users',
-        'state' => 'required',
         'user_type' => 'required',
+        'pan_no' => 'required',
+        'aadhar_no' => 'required',
+        'shop_name' => 'required',
+        'district' => 'required',
+        'state_id' => 'required',
         'referal_code' => 'required|exists:users,referal_code',
         'email' => 'required|unique:users',
         "password" => 'required|min:8|confirmed',

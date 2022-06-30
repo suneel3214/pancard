@@ -68,7 +68,7 @@ https://templatemo.com/tm-570-chain-app-dev
               <li class="scroll-to-section"><a href="#">Services</a></li>
               <li class="scroll-to-section"><a href="#">About</a></li>
               <li class="scroll-to-section"><a href="{{route('contacts.index')}}">Contact</a></li>
-              <li class="scroll-to-section"><a href="{{url('/register')}}">Register</a></li>
+              <li class="scroll-to-section"><a href="{{route('user.register')}}">Register</a></li>
               <li class="scroll-to-section">
                  <a class="login-btn"  href="{{url('/login')}}"><i class="fa fa-sign-in-alt"></i> Login</a>
               </li>

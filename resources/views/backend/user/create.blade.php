@@ -104,7 +104,7 @@
                                           <div class="form-outline mb-4">
                                             <label class="form-label" for="">State <span class="text-danger">*</span></label>
                                             <select name="state_id" id="state" class="form-control select-type">
-                                                <option value="">Select Role</option>
+                                                <option value="">Select State</option>
                                                 @foreach($state as $states)
                                                 <option value="{{$states->id}}">{{$states->name}}</option>
                                                 @endforeach

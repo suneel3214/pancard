@@ -62,6 +62,14 @@
               </div>
             </li>
             @endif
+            @if(Auth::user()->user_type == 5)
+            <li class="nav-item">
+              <a class="nav-link"  href="{{route('coupons.index')}}">
+                <span class="menu-title">Purchase Coupon</span>
+                <i class="mdi mdi-animation menu-icon"></i>
+              </a>
+            </li>
+            @endif
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#setting" aria-expanded="false" aria-controls="">
                 <span class="menu-title">Setting</span>

@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 use Mail;
 use App\Mail\MyTestMail;
+use Illuminate\Support\Facades\Http;
+use App\Helper\Curlhelpers;
+
 /**
  * Class UserRepository.
  */
@@ -23,7 +26,7 @@ class UserRepository extends BaseRepository
     public function AllUser()
     {
         $data = User::with('roles','creates')->orderBy('id', 'desc')->paginate(20);
-
+        // dd($data);
         $data = User::with('roles','creates')->orderBy('id', 'desc')->select('*')->where('id', '!=', Auth::id())->paginate(20);
 
         if(Auth::check()){
@@ -89,40 +92,8 @@ class UserRepository extends BaseRepository
             "vle_pin"=>$request->password
         ];
              
-        $url = 'https://mgopanmitra.com/api/add_vle.php?api_key=e5e27c-f8edec-6bbfa6-e5e996-51bf0d&vle_id='.$data['username'].'&vle_name='.$data['name'].'&vle_mob='.$data['mobile'].'&vle_email='.$data['email'].'&vle_shop='.$data['shop_name'].'&vle_loc='.$data['district'].'&vle_state='.$data['state_id'].'&vle_pin='.$request->password.'&vle_uid='.$data['aadhar_no'].'&vle_pan='.$data['pan_no'].'';
- 
-        // Initialize a CURL session.
-        $ch = curl_init();
-
-        // Return Page contents.
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-        //grab URL and pass it to the variable.
-        curl_setopt($ch, CURLOPT_URL, $url);
-
-        $result = curl_exec($ch);
-
-        dd($result);
-        
-        // $curl = curl_init();
-        // curl_setopt_array($curl,
-        // array(
-        // CURLOPT_URL =>
-        // "https://mgopanmitra.com/api/add_vle.php",
-        // CURLOPT_RETURNTRANSFER => true,
-        // CURLOPT_ENCODING => "",
-        // CURLOPT_MAXREDIRS => 10,
-        // CURLOPT_TIMEOUT => 0,
-        // CURLOPT_FOLLOWLOCATION
-        // => true,
-        // CURLOPT_HTTP_VERSION =>
-        // CURL_HTTP_VERSION_1_1,
-        // CURLOPT_CUSTOMREQUEST => "GET",
-        // CURLOPT_POSTFIELDS => $dataApi ));
-        // $response =
-        // curl_exec($curl);
-        // curl_close($curl);
-        // dd($response);
+        $api = Curlhelpers::vle_create($dataApi);
+        // dd($api);
 		$user = User::create($data);
 
        return redirect()->back();
@@ -213,3 +184,4 @@ class UserRepository extends BaseRepository
         return $user->update($input);
     }
 }
+ 

@@ -6,10 +6,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Frontend\ContactUsController;
-
-
-
-
+use App\Http\Controllers\Admin\CouponController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +38,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/admin/user/register',[App\Http\Controllers\Admin\UserController::class,'create'])->name('admin.register');
     Route::get('/admin/user/edit/{id}',[App\Http\Controllers\Admin\UserController::class,'edit'])->name('admin.user.edit');
     Route::put('/admin/user/update/{id}',[App\Http\Controllers\Admin\UserController::class,'update'])->name('admin.user.update');
+    Route::resource('coupons', 'App\Http\Controllers\Admin\CouponController');
 
 });
 

@@ -3,6 +3,7 @@ namespace App\Repositories\Admin;
 use App\Repositories\BaseRepository;
 use Illuminate\Http\Request;
 use App\Helper\Curlhelpers;
+use RealRashid\SweetAlert\Facades\Alert;
 
 /**
  * Class CouponRepository.
@@ -26,6 +27,11 @@ class CouponRepository extends BaseRepository
         ];
         $api = Curlhelpers::coupon_request($dataApi);
         // dd($api);
+        if($api['status'] == "SUCCESS"){
+            Alert::success('SUCCESS', 'Coupon Purchase Successfully..');
+            return redirect()->back();
+        }else
+        Alert::success('FAILED', 'Insufficient Balance Please Add Your Wallet Amount..');
         return redirect()->back();
    }
 

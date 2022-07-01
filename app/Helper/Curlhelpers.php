@@ -32,6 +32,20 @@
         return $responseBody;
        
     }
+
+    static function vle_password_reset()
+    {    
+        // dd($data);
+        $resetApiURL = 'https://mgopanmitra.com/api/pass_reset.php?api_key=e5e27c-f8edec-6bbfa6-e5e996-51bf0d&vle_id='
+        .$data['vle_id'].'';
+        // dd($resetApiURL);
+        $response = Http::get($resetApiURL);
+  
+        $statusCode = $response->status();
+        $responseBody = json_decode($response->getBody(), true); 
+        return $responseBody;
+       
+    }
   }
 
   ?>

@@ -35,7 +35,11 @@
                                     </div>
                                     <div class="form-outline mb-4">
                                     <label class="form-label" for="">Type<span class="text-danger">*</span></label>
-                                    <input type="text" name="type" placeholder="type" id="type" class="form-control" />
+                                    <select name="type" id="type" class="form-control select-type">
+                                      <option value="0">Select type</option>
+                                      <option value="1">P-Coupon</option>
+                                      <option value="2"> E-Coupon</option>
+                                    </select>
                                     </div>
                                     <div class="form-outline mb-4">
                                     <label class="form-label" for="">Quantity <span class="text-danger">*</span></label>
@@ -58,10 +62,18 @@
                 $("#regForm").validate({
                     rules: {
                         psa_id: "required",
-                        type: "required",
-                        quantity: "required",
+                        quantity: {
+                          required: true,
+                          min: 2,
+                        },
+                        type: {
+                          selectcheck: true
+                        }
                     }
                 });
+                jQuery.validator.addMethod('selectcheck', function (value) {
+                    return (value != '0');
+                }, "Type is required");
             });
          </script>
 @extends('partial.footer')

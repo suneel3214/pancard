@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Frontend\ContactUsController;
 use App\Http\Controllers\Admin\CouponController;
-
+use App\Http\Controllers\Auth\ForgotPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +28,13 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/user/create',[App\Http\Controllers\Admin\UserController::class,'register'])->name('user.create');
 Route::get('/user/register',[App\Http\Controllers\Admin\UserController::class,'userRegister'])->name('user.register');
+
+// reset password route 
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+// reset password route end 
 
 Route::resource('contacts', 'App\Http\Controllers\Frontend\ContactUsController');
 

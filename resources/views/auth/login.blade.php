@@ -40,19 +40,21 @@
                                     @enderror
                                 </div>
 
-                                <div class="text-center pt-1 mb-5 pb-1 gradient-btn">
+                                <div class="text-center pt-1 mb-3 pb-1 gradient-btn">
                                     <button type="submit" type="submit">Log
                                     in</button>
-                                    <a class="text-muted" href="#!">Forgot password?</a>
                                 </div>
 
                                 <div class="d-flex align-items-center justify-content-center pb-4">
                                     <p class="mb-0 me-2">Don't have an account?</p>
-                                    @if (Route::has('register'))
-                                    <a href="{{ route('register')}}" class="" style="color:#000;">Register</a>
+                                    @if (Route::has('user.register'))
+                                    <a href="{{ route('user.register')}}" class="" style="color:#000;">Register</a>
                                     @endif
                                 </div>
                             </form>
+                            <div class="text-center pt-1 mb-3 pb-1 m-gradient-btn">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#passwordReset" class="">Forgot password?</button>
+                            </div>
                         </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center gradient">
@@ -69,5 +71,34 @@
                 </div>
             </div>
         </section>
+        <!-- Password reset Modal -->
+            <div class="modal fade" id="passwordReset" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Password Reset</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('forget.password.post') }}" method="POST">
+                            @csrf
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example22">E-Mail Address</label>
+                                <input type="text" id="email_address" class="form-control" required  placeholder="Enter your Email"  name="email" />
+                            </div>
+                            <div class="text-center pt-1 mb-5 pb-1 gradient-btn">
+                                <button type="submit" class="">
+                                    Send Password Reset Link
+                                </button>
+                            </div>
+                            <strong>Note:-</strong> &nbsp;<span style="color:#9d1414;font-size:12px;">After Submit Please check your email and after Reset password !</span>
+                        </form>
+                    </div>
+                    <div class="modal-footer m-gradient-btn">
+                        <button type="button" class="" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
         <!-- login page end -->
 @extends('frontend.partial.footer')

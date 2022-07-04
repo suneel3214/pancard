@@ -20,15 +20,15 @@
                    <div class="row">
                        <div class="col-md-6">
                           <div class="form-outline mb-4">
-                            <label class="form-label" for="">Name</label>
+                            <label class="form-label" for="">Name <span class="text-danger">*</span></label>
                             <input type="text" id="name" placeholder="Name" name="name"  value="{{ old('name') }}" class="form-control" />
                             <small class="text-danger">@error('name'){{$message}}@enderror</small>
                           </div>
                        </div>
                        <div class="col-md-6">
                           <div class="form-outline mb-4">
-                            <label class="form-label" for="">Referal Code</label>
-                            <input  placeholder="Referal Code" id="referal_code" type="text" class="form-control" name="referal_code" />
+                            <label class="form-label" for="">Referal Code <span class="text-danger">*</span></label>
+                            <input  placeholder="Referal Code" id="referal_code" value="" type="text" class="form-control" name="referal_code" />
                             <small class="text-danger">@error('referal_code'){{$message}}@enderror</small>
                           </div>
                          
@@ -37,14 +37,14 @@
                    <div class="row">
                        <div class="col-md-6">
                           <div class="form-outline mb-4">
-                              <label class="form-label" for="">Mobile</label>
+                              <label class="form-label" for="">Mobile <span class="text-danger">*</span></label>
                               <input type="number" onKeyPress="if(this.value.length==12) return false;" id="mobile" placeholder="Mobile" name="mobile" class="form-control"  />
                               <small class="text-danger">@error('mobile'){{$message}}@enderror</small>
                           </div>
                        </div>
                        <div class="col-md-6">
                          <div class="form-outline mb-4">
-                            <label class="form-label" for="">Email address</label>
+                            <label class="form-label" for="">Email address <span class="text-danger">*</span></label>
                             <input type="email" id="email"  class="form-control" name="email" value="{{ old('email') }}"  placeholder="Email" />
                             <small class="text-danger">@error('email'){{$message}}@enderror</small>
                           </div>
@@ -53,7 +53,7 @@
                    <div class="row">
                        <div class="col-md-6">
                           <div class="form-outline mb-4">
-                              <label class="form-label" for="">Password</label>
+                              <label class="form-label" for="">Password <span class="text-danger">*</span> </label>
                               <input  placeholder="Password" id="password" type="password" class="form-control" name="password" />
                               <small class="text-danger">@error('password'){{$message}}@enderror</small>
                           </div>
@@ -68,16 +68,14 @@
                    <div class="row">
                         <div class="col-md-6">
                           <div class="form-outline mb-4">
-                            <label class="form-label" for="">Pancard Number<span class="text-danger">*</span></label>
+                            <label class="form-label" for="">Pancard Number</label>
                             <input type="text" id="pan_no" name="pan_no" placeholder="Pancard number" class="form-control" />
-                            <small class="text-danger">@error('pan_no'){{$message}}@enderror</small>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-outline mb-4">
-                            <label class="form-label" for="">Aadhar Number <span class="text-danger">*</span></label>
+                            <label class="form-label" for="">Aadhar Number</label>
                             <input type="text" id="aadhar_no" name="aadhar_no" onKeyPress="if(this.value.length==12) return false;" placeholder="Aadhar Number" class="form-control" />
-                            <small class="text-danger">@error('aadhar_no'){{$message}}@enderror</small>
                           </div>
                         </div>
                     </div>
@@ -100,19 +98,16 @@
                    <div class="row">
                        <div class="col-md-6">
                           <div class="form-outline mb-4">
-                            <label class="form-label" for="">User type</label>
-                            <select name="user_type" class="form-control" id="user_type">
+                            <label class="form-label" for="">User type <span class="text-danger">*</span></label>
+                            <select name="user_type" class="form-control" id="roleID">
                                 <option value="">Select User Type</option>
-                                <option value="5">Retailer</option>
-                                <option value="4">Distributer</option>
-                                <option value="3">Master Distributer</option>
                             </select>
                             <small class="text-danger">@error('user_type'){{$message}}@enderror</small>
                           </div>
                        </div>
                        <div class="col-md-6">
                          <div class="form-outline mb-4">
-                            <label class="form-label" for="">State</label>
+                            <label class="form-label" for="">State <span class="text-danger">*</span></label>
                             <select name="state_id" class="form-control" id="state_id">
                                 <option value="">Select User Type</option>
                                 @if(isset($state))
@@ -146,4 +141,31 @@
     </div>
   </div>
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+        $(document).ready(function () {
+            
+            $('#referal_code').on('change', function () {
+                var user_id = this.value;
+                // alert(user_id);
+                $("#roleID").html('');
+                $.ajax({
+                    url: "{{url('user/fetch-role')}}",
+                    type: "POST",
+                    data: {
+                         user_id: user_id,
+                        _token: '{{csrf_token()}}'
+                    },                   
+                    success: function (res) {
+                      // console.log(res)
+                        $('#roleID').html('<option value="">Select User type</option>');
+                        $.each(res.roles, function (key, value) {
+                            $("#roleID").append('<option value="' + value
+                                .id + '">' + value.display_name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 @extends('frontend.partial.footer')

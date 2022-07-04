@@ -28,6 +28,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/user/create',[App\Http\Controllers\Admin\UserController::class,'register'])->name('user.create');
 Route::get('/user/register',[App\Http\Controllers\Admin\UserController::class,'userRegister'])->name('user.register');
+Route::post('user/fetch-role', [UserController::class, 'fetchRole']);
 
 // reset password route 
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');

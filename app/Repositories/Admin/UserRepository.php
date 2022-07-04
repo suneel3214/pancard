@@ -71,6 +71,7 @@ class UserRepository extends BaseRepository
     public function userStore($request){
         $generateCode = 'PCS';
 		$data = $request->all();
+        $data['show_password'] = $request->password;
         $data['referal_code'] = $this->generateUniqueCode();
         $data['username'] = $generateCode.$request->mobile;
         Mail::to($request->email)->send(new MyTestMail($data));
@@ -102,12 +103,13 @@ class UserRepository extends BaseRepository
     public function userRegister($request){
         $generateCode = 'PCS';
 		$data = $request->all();
+        $data['show_password'] = $request->password;
         $data['referal_code'] = $this->generateUniqueCode();
         $data['username'] = $generateCode.$request->mobile;
         Mail::to($request->email)->send(new MyTestMail($data));
         $data['password'] = Hash::make($request->password);
         $userId = User::where('referal_code',$request->referal_code)->first();
-      
+        // dd($data);
         $reference = $userId->id;
         $userRoleId = $userId->user_type;
         $data['created_by'] = $reference;        

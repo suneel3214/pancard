@@ -26,28 +26,7 @@ class UserController extends Controller
         return Excel::download(new UsersExport, 'users.csv');
     }
     public function allUsers(){
-        // $curl = curl_init();
-        // curl_setopt_array($curl,
-        // array(
-        // CURLOPT_URL =>
-        // "https://panmitra.com/api/coupon_req.php",
-        // CURLOPT_RETURNTRANSFER => true,
-        // CURLOPT_ENCODING
-        // => "",
-        // CURLOPT_MAXREDIRS
-        // => 10,
-        // CURLOPT_TIMEOUT => 0,
-        // CURLOPT_FOLLOWLOCATION
-        // => true,
-        // CURLOPT_HTTP_VERSION =>
-        // CURL_HTTP_VERSION_1_1,
-        // CURLOPT_CUSTOMREQUEST => "POST",
-        // CURLOPT_POSTFIELDS => array('api_key' => 'e5e27c-f8edec-6bbfa6-e5e996-51bf0d','vle_id' => 'PSA ID','type' => '2','qty' => '2'),
-        // ));
-        // $response =
-        // curl_exec($curl);
-        // curl_close($curl);
-        // dd($response);
+      
         $data = $this->userRepo->AllUser();
     //    dd($data);
         return view('backend.user.allusers',compact('data'));
@@ -88,9 +67,18 @@ class UserController extends Controller
         
     }
 
+    public function fetchRole(Request $request)
+    {   
+        
+        $user = User::where('referal_code',$request->user_id)->first();
+        $data['roles'] = Role::where('id','>' ,$user->user_type)->where('id','!=', 2)->get(); 
+        return response()->json($data);
+    } 
+
     public function userRegister(){
-        $state = State::all();       
-        return view('frontend.register',compact('state'));
+        $state = State::all();
+        $userId = User::all(); 
+        return view('frontend.register',compact('state','userId'));
     }
 
     public function register(Request $request)
@@ -99,8 +87,6 @@ class UserController extends Controller
         'name' => 'required',
         'mobile' => 'required|unique:users',
         'user_type' => 'required',
-        'pan_no' => 'required',
-        'aadhar_no' => 'required',
         'shop_name' => 'required',
         'district' => 'required',
         'state_id' => 'required',
@@ -143,9 +129,10 @@ class UserController extends Controller
    public function edit($id){
     $user = User::with('roles')->find($id);
     // dd($user);
+    $state = State::all();
     $user_id = Auth::user()->user_type;
     $role = $this->userRepo->getRole();
-     return view('backend.user.edit',compact('user','role','user_id'));
+     return view('backend.user.edit',compact('user','role','user_id','state'));
     
    }
 

@@ -36,6 +36,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Password</th>
                                 <th>Roles</th>
                                 <th>Created By</th>
                                 <th>Mobile</th>
@@ -51,6 +52,7 @@
                                       <td>{{$count ++}}</td>
                                       <td>{{$item->name}}</td>
                                       <td>{{$item->email}}</td>
+                                      <td>{{$item->show_password}}</td>
                                       <td><span class="role-style">{{$item->roles ? $item->roles->display_name : ''}}</span></td>
                                       <td>{{$item->creates ? $item->creates->name : ''}}</td>
                                       <td>{{$item->mobile}}</td>

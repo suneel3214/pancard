@@ -37,7 +37,8 @@ class User extends Authenticatable
         'pan_no',
         'aadhar_no',
         'shop_name',
-        'district'
+        'district',
+        'show_password'
     ];
 
     /**

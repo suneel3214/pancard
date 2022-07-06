@@ -4,6 +4,13 @@
 
 @section('content')
 @include('sweetalert::alert')
+<style>
+   .style-btn{
+    border: navajowhite;
+    background-color: #fff;
+    color: #000;
+  }
+</style>
 <div class="main-panel" style="width:100% !important">
           <div class="content-wrapper">
             <div class="page-header">
@@ -51,13 +58,11 @@
                                                     <td>{{$packages->amount}}</td>
                                                     <td>{{$packages->discount}}</td>
                                                     <td>
-                                                        <button value="{{$packages->id}}" class="btn btn-success btn-sm edit-btn">Edit</button>
-                                                    </td>
-                                                    <td>
+                                                        <button value="{{$packages->id}}" class="style-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
                                                         <form action="{{ route('packages.destroy',$packages->id) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                            <button type="submit" class="style-btn"><i class="fa-solid fa-trash"></i></button>
                                                         </form>
                                                     </td> 
                                                     </tr>
@@ -164,10 +169,10 @@
                   </div>
               </div>
           </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
           <!-- content-wrapper ends -->

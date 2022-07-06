@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Admin\CouponRepository;
+use App\Models\User;
 
 class CouponController extends Controller
 {
@@ -44,7 +45,6 @@ class CouponController extends Controller
     {
             $user = $this->couponRepo->createCoupon($request);
             // dd($user);
-            // return redirect()->route('home');  
             return redirect()->back();    
 
                 

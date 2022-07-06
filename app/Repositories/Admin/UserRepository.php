@@ -25,9 +25,9 @@ class UserRepository extends BaseRepository
 
     public function AllUser()
     {
-        $data = User::with('roles','creates')->orderBy('id', 'desc')->paginate(20);
+        $data = User::with('roles','creates')->orderBy('id', 'desc')->paginate(10);
         // dd($data);
-        $data = User::with('roles','creates')->orderBy('id', 'desc')->select('*')->where('id', '!=', Auth::id())->paginate(20);
+        $data = User::with('roles','creates')->orderBy('id', 'desc')->select('*')->where('id', '!=', Auth::id())->paginate(10);
 
         if(Auth::check()){
             return $data;
@@ -39,9 +39,9 @@ class UserRepository extends BaseRepository
 
     public function getAllUser()
     {
-        $data = User::with('roles')->orderBy('id', 'desc')->paginate(20);
+        $data = User::with('roles')->orderBy('id', 'desc')->paginate(10);
 
-        $data = User::with('roles')->orderBy('id', 'desc')->select('*')->where('id', '!=', Auth::id())->paginate(20);
+        $data = User::with('roles')->orderBy('id', 'desc')->select('*')->where('id', '!=', Auth::id())->paginate(10);
 
         if(Auth::check()){
             return $data;

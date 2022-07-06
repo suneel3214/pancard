@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
+use App\Helper\Curlhelpers;
+
 
 class HomeController extends Controller
 {
@@ -27,7 +29,9 @@ class HomeController extends Controller
     {
         $user_id = Auth::user()->id;
         $data = User::with('creates')->where('id',$user_id)->first();
-        // dd($data);
-        return view('home',compact('data'));
+        $count = User::count();
+        // dd($count);
+
+        return view('home',compact('data','count'));
     }
 }

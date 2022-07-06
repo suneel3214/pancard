@@ -100,7 +100,7 @@ class UserController extends Controller
             Alert::success('Success', 'The information has been sent to the user email');
             return redirect()->route('login'); 
         }else{
-            Alert::success('Failed', 'Registration Failed ..!');
+            Alert::error('Failed', 'Registration Failed ..!');
             return redirect()->back(); 
         }
            

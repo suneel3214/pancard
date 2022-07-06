@@ -4,7 +4,13 @@
 
 @section('content')
 @include('sweetalert::alert')
-
+<style>
+   .style-btn{
+    border: navajowhite;
+    background-color: #fff;
+    color: #000;
+  }
+</style>
 <div class="main-panel" style="width:100% !important">
           <div class="content-wrapper">
             <div class="page-header">
@@ -49,7 +55,7 @@
                                       <td>{{$roles->percentage_amount}} %</td>
                                       <td>{{$roles->description}}</td>
                                       <td>
-                                        <button value="{{$roles->id}}" class="btn btn-success btn-sm edit-btn" style="color:#000;">Percentage Change</button>
+                                        <button value="{{$roles->id}}" class="style-btn edit-btn" style="color:#000;"><i class="fa-solid fa-pen-to-square"></i></button>
                                       </td>
                                       </tr>
                                   </tbody>

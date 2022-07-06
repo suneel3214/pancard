@@ -4,6 +4,13 @@
 
 @section('content')
 @include('sweetalert::alert')
+<style>
+   .style-btn{
+    border: navajowhite;
+    background-color: #fff;
+    color: #000;
+  }
+</style>
 <div class="main-panel" style="width:100% !important">
           <div class="content-wrapper">
             <div class="page-header">
@@ -30,7 +37,7 @@
                     <div class="row">
                       <div class="col-md-12">
                           <div class="table-responsive">
-                              <table class="table">
+                              <table id="" class="table">
                               <thead>
                                 <tr>
                                 <th>#</th>
@@ -38,9 +45,9 @@
                                 <th>Email</th>
                                 <th>Password</th>
                                 <th>Roles</th>
+                                <th>PSA ID</th>
                                 <th>Created By</th>
                                 <th>Mobile</th>
-                                <th>State</th>
                                 <th>Action</th>
                                 </tr>
                               </thead>
@@ -54,16 +61,16 @@
                                       <td>{{$item->email}}</td>
                                       <td>{{$item->show_password}}</td>
                                       <td><span class="role-style">{{$item->roles ? $item->roles->display_name : ''}}</span></td>
+                                      <td>{{$item->username}}</td>
                                       <td>{{$item->creates ? $item->creates->name : ''}}</td>
                                       <td>{{$item->mobile}}</td>
-                                      <td>{{$item->state}}</td>
                                       <td>
                                       @if($item->status == 1)
-                                        <a href="{{route('admin.activate', $item->id)}}" style="width: 102px" class="btn btn-success btn-sm">Activate</a>
+                                        <a href="{{route('admin.activate', $item->id)}}" style="width: 102px" class="style-btn"><i class="fa-solid fa-circle-check"></i></a>
                                         @else
-                                        <a href="{{route('admin.activate', $item->id)}}" class="btn btn-danger btn-sm">UnActivate</a>
-                                      @endif
-                                      <a href="{{route('admin.user.edit',$item->id)}}" class="btn btn-info btn-sm">Edit</a>
+                                        <a href="{{route('admin.activate', $item->id)}}" class="style-btn"><i class="fa-solid fa-circle-xmark"></i></a>
+                                      @endif 
+                                      <a href="{{route('admin.user.edit',$item->id)}}" class=" style-btn"><i class="fa-solid fa-pen-to-square"></i></a>
                                       </td>
                                       </tr>
                                   </tbody>
@@ -71,14 +78,13 @@
                               @endif
                             </table>
                           </div>
+                          {!! $data->links() !!}
                      </div>
-                     {!! $data->links() !!}
                   </div>
                 </div>
             </div>
           </div>
           <!-- content-wrapper ends -->
-   
 @extends('partial.footer')
 
 @endsection

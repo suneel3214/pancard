@@ -68,13 +68,13 @@
                                     <div class="row">
                                        <div class="col-md-6">
                                           <div class="form-outline mb-4">
-                                            <label class="form-label" for="">Pancard Number<span class="text-danger">*</span></label>
+                                            <label class="form-label" for="">Pancard Number</label>
                                             <input type="text" id="pan_no" name="pan_no" placeholder="Pancard number" class="form-control" />
                                           </div>
                                        </div>
                                        <div class="col-md-6">
                                           <div class="form-outline mb-4">
-                                            <label class="form-label" for="">Aadhar Number <span class="text-danger">*</span></label>
+                                            <label class="form-label" for="">Aadhar Number</label>
                                             <input type="text" id="aadhar_no" name="aadhar_no" onKeyPress="if(this.value.length==12) return false;" placeholder="Aadhar Number" class="form-control" />
                                           </div>
                                        </div>
@@ -82,7 +82,7 @@
                                     <div class="row">
                                        <div class="col-md-6">
                                           <div class="form-outline mb-4">
-                                            <label class="form-label" for="">Shop Name<span class="text-danger">*</span></label>
+                                            <label class="form-label" for="">Shop Name</label>
                                             <input type="text" id="shop_name" name="shop_name" placeholder="Shop name" class="form-control" />
                                           </div>
                                        </div>
@@ -119,8 +119,8 @@
                                         @foreach($role as $roles)
                                         @if($user_id != $roles->id && $user_id <= $roles->id)
                                         <option value="{{$roles->id}}">{{$roles->display_name}}</option>
-                                            @endif
-                                            @endforeach
+                                        @endif
+                                        @endforeach
                                     </select>
                                     </div>
                                     <div class="d-flex justify-content-center">
@@ -146,10 +146,7 @@
                     password: "required",
                     user_type:"required",
                     state:"required",
-                    pan_no:"required",
-                    aadhar_no:"required",
                     district:"required",
-                    shop_name:"required",
                 }
             });
         });

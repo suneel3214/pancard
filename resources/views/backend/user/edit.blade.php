@@ -150,7 +150,7 @@
                                     </div>
                                     <div class="d-flex justify-content-center">
                                     <button type="submit"
-                                        class="btn  btn-sm my-btn">Register</button>
+                                        class="btn  btn-sm my-btn">Update</button>
                                     </div>
                                 </form>
                             </div>

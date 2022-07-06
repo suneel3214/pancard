@@ -94,6 +94,7 @@
                               @endif 
                             </table>
                           </div>
+                          {!! $service->links() !!}
                      </div>
                   </div>
                 </div>

@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Frontend\ContactUsController;
+use App\Http\Controllers\Frontend\AboutUsController;
+use App\Http\Controllers\Frontend\ServicesController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 /*
@@ -38,6 +40,11 @@ Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPass
 // reset password route end 
 
 Route::resource('contacts', 'App\Http\Controllers\Frontend\ContactUsController');
+Route::resource('abouts', 'App\Http\Controllers\Frontend\AboutUsController');
+Route::resource('/services/index', 'App\Http\Controllers\Frontend\ServicesController');
+
+
+
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/admin/index',[App\Http\Controllers\Admin\UserController::class,'index'])->name('admin.index');

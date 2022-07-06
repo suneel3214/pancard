@@ -48,7 +48,7 @@
                 <div class="card bg-gradient-service3 card-img-holder text-white card-h shadow-lg">
                   <div class="card-body">
                       <h3 class="font-weight-normal mb-3">NSDL Fingerprint
-                      <i class="fa fa-location-arrow" style="color:white"></i>
+                      <i class="fa-solid fa-fingerprint" style="color:white"></i>
                       </h3>
                       <a href="#" class="text-d"><h6 class="mb-5 text-white">NSDL Pan Card with Finger Print</h6></a>
                   </div>
@@ -75,7 +75,7 @@
                 </div>
               </div>
               <div class="col-md-4 stretch-card grid-margin">
-                <div class="card bg-gradient-service2 card-img-holder text-white card-h shadow-lg">
+                <div class="card bg-gradient-service3 card-img-holder text-white card-h shadow-lg">
                   <div class="card-body">
                     <h4 class="font-weight-normal mb-3">Visitors Online <i class="mdi mdi-diamond mdi-24px float-right"></i>
                     </h4>

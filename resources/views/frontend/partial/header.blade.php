@@ -65,8 +65,8 @@ https://templatemo.com/tm-570-chain-app-dev
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class="scroll-to-section"><a href="{{url('/')}}" class="active">Home</a></li>
-              <li class="scroll-to-section"><a href="#">Services</a></li>
-              <li class="scroll-to-section"><a href="#">About</a></li>
+              <li class="scroll-to-section"><a href="{{url('/services/index')}}">Services</a></li>
+              <li class="scroll-to-section"><a href="{{route('abouts.index')}}">About</a></li>
               <li class="scroll-to-section"><a href="{{route('contacts.index')}}">Contact</a></li>
               <li class="scroll-to-section"><a href="{{route('user.register')}}">Register</a></li>
               <li class="scroll-to-section">

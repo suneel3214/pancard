@@ -8,7 +8,7 @@
               <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
                 <div class="row">
                   <div class="col-lg-12">
-                    <h2>WEL COME TO SMART PANCARD SERVICES</h2>
+                    <h1>WEL COME TO SMART PANCARD SERVICES</h1>
                     <p>Chain App Dev is an app landing page HTML5 template based on Bootstrap v5.1.3 CSS layout provided by TemplateMo, a great website to download free CSS templates.</p>
                   </div>
                   <div class="col-lg-12">

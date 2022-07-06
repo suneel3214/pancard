@@ -2293,3 +2293,7 @@ responsive
   background-color: #4b8ef1;
   color: #fff !important;
 }
+
+.my-shadow{
+  box-shadow: 12px 11px 18px #bdb6b6;
+}

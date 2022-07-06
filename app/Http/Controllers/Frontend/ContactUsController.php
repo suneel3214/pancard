@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ContactUs;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ContactUsController extends Controller
 {
@@ -35,7 +37,11 @@ class ContactUsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+        $item = ContactUs::create($data);
+        Alert::success('Success', 'Message send successfull.');
+        return redirect()->back();
     }
 
     /**

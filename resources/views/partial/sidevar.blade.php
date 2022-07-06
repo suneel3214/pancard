@@ -71,7 +71,7 @@
               <div class="collapse" id="setting">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="#">Customer help?</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="#">Contact</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('contactList.index')}}">Contact</a></li>
                 </ul>
               </div>
             </li>

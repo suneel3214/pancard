@@ -1,4 +1,6 @@
 @include('frontend.partial.header')
+@include('sweetalert::alert')
+
 <!-- section first -->
 <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
     <div class="container">
@@ -59,7 +61,8 @@
   <h1 class="text-center">Contact Us Form</h1>
   <div class="row" style="padding: 0px 10px;">
     <div class="col-md-6 card mt-5">
-        <form id="regForm" style="padding: 20px;">
+        <form method="POST" action="{{route('contacts.store')}}" id="regForm" style="padding: 20px;">
+        @csrf
           <!-- Name input -->
           <div class="mb-3">
             <label class="form-label">Name</label>

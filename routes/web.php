@@ -10,6 +10,8 @@ use App\Http\Controllers\Frontend\AboutUsController;
 use App\Http\Controllers\Frontend\ServicesController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Admin\ContactController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,6 +75,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::resource('services', 'App\Http\Controllers\Admin\ServiceController');
     Route::get('/edit-service/{id}',[App\Http\Controllers\Admin\ServiceController::class,'service_edit'])->name('service.edit');
     Route::put('/service-update',[App\Http\Controllers\Admin\ServiceController::class,'updateService'])->name('service.update');
+    Route::resource('contactList', 'App\Http\Controllers\Admin\ContactController');
 
 
 

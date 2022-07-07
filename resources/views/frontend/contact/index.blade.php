@@ -57,9 +57,9 @@
     </div>
 </div>
 <!-- section third -->
-<div class="container mt-3">
+<div class="container  mt-3">
   <h1 class="text-center">Contact Us Form</h1>
-  <div class="row" style="padding: 0px 10px;">
+  <div class="row my-shadow" style="padding: 0px 10px;">
     <div class="col-md-6 card mt-5">
         <form method="POST" action="{{route('contacts.store')}}" id="regForm" style="padding: 20px;">
         @csrf
@@ -85,7 +85,7 @@
        </form>
     </div>
     <div class="col-md-6 card mt-5">
-      <img src="{{asset('frontend/assets/images/email.png')}}" alt="" srcset="">
+      <img src="{{asset('frontend/assets/images/email.png')}}" style="padding:80px" alt="" srcset="">
     </div>
   </div>
 </div>

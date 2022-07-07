@@ -15,7 +15,7 @@ class ContactController extends Controller
      */
     public function index()
     { 
-       $data = ContactUs::all();
+       $data = ContactUs::orderBy('id', 'desc')->paginate(5);
        return view('backend.setting.contactUs.index',compact('data'));
     }
 

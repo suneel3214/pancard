@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ContactUs;
 use RealRashid\SweetAlert\Facades\Alert;
-
+use Mail; 
 class ContactUsController extends Controller
 {
     /**
@@ -38,8 +38,25 @@ class ContactUsController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        // dd($data);
         $item = ContactUs::create($data);
+
+        //  Send mail to admin 
+
+        \Mail::send('emails.contactMail', array( 
+
+            'name' => $data['name'], 
+
+            'email' => $data['email'], 
+
+            'form_message' => $data['message'], 
+
+        ), function($message) use ($request){ 
+
+            $message->from($request->email); 
+
+            $message->to('suneelchandel935@gmail.com', 'Admin')->subject($request->get('message')); 
+
+        }); 
         Alert::success('Success', 'Message send successfull.');
         return redirect()->back();
     }

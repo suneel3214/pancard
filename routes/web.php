@@ -52,7 +52,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/admin/index',[App\Http\Controllers\Admin\UserController::class,'index'])->name('admin.index');
 
     Route::post('/admin/user/create',[App\Http\Controllers\Admin\UserController::class,'store'])->name('admin.user.create');
-    // Route::get('/admin/role/index',[App\Http\Controllers\Admin\RoleController::class,'index'])->name('admin.role');
     Route::get('/activate/{id}', [App\Http\Controllers\Admin\UserController::class, 'activate'])->name('admin.activate');
     Route::get('/admin/user/register',[App\Http\Controllers\Admin\UserController::class,'create'])->name('admin.register');
     Route::get('/admin/user/edit/{id}',[App\Http\Controllers\Admin\UserController::class,'edit'])->name('admin.user.edit');

@@ -3,6 +3,7 @@
 @extends('partial.sidevar')
 
 @section('content')
+
 <div class="main-panel" style="width:100% !important">
           <div class="content-wrapper">
             <div class="page-header">
@@ -56,6 +57,7 @@
             </div>
           </div>
           <!-- content-wrapper ends -->
+          
 @extends('partial.footer')
 
 @endsection

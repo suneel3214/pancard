@@ -16,7 +16,7 @@
     <!-- inject:css -->
     <!-- endinject -->
     <!-- datatables css -->
-    
+   
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <!-- Layout styles -->
@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('backend/css/mystyle.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- End layout styles -->
+  
   </head>
   <body>
     <div class="container-scroller" style="width: 100%;">
